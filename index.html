@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-theme="graphite" data-mode="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080a0f">
+<title>NexusPortal — Customer Portal</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="login"><div class="logincard"><div class="brand" style="padding:0 0 14px"><div class="logo">N</div><div><b>NEXUS SUITE</b><small>Demo sign-in</small></div></div>
+<input id="login-email" placeholder="Email" value="admin@teamnexus.app">
+<input id="login-pass" type="password" placeholder="Password">
+<div id="login-err"></div>
+<button class="btn primary" style="width:100%" onclick="nexusLogin()">Sign in</button>
+<p class="muted" style="font-size:11px;margin-top:12px">Demo credentials: <b>admin@teamnexus.app</b> / <b>Nexus@2026</b></p></div></div>
+
+<div class="app">
+<aside class="side">
+ <div class="brand"><div class="logo">N</div><div><b>NEXUSPORTAL</b><small>Dedicated Workspace</small></div></div>
+ <div class="workspace"><b>Ahana Trading</b><small>Bangladesh · Enterprise</small></div>
+ <div class="navlabel">Workspace</div>
+ <nav class="nav">
+  <button class="active" data-page="home"><i class="ico">⌂</i><span>Home</span></button>
+  <button data-page="catalogue"><i class="ico">▦</i><span>Catalogue</span></button>
+  <button data-page="quickorder"><i class="ico">⟳</i><span>Quick order</span></button>
+  <button data-page="orders"><i class="ico">▤</i><span>Orders</span></button>
+  <button data-page="invoices"><i class="ico">▥</i><span>Invoices</span></button>
+  <button data-page="payments"><i class="ico">৳</i><span>Payments</span></button>
+  <button data-page="support"><i class="ico">◌</i><span>Support</span></button>
+  <button data-page="account"><i class="ico">◉</i><span>Account</span></button>
+ </nav>
+ <div class="navlabel">System</div>
+ <nav class="nav">
+  <button data-page="settings"><i class="ico">⚙</i><span>Settings</span></button>
+  <button data-toast="Help & docs opened"><i class="ico">◉</i><span>Help & docs</span></button>
+ </nav>
+</aside>
+<main class="main">
+<header class="top"><div class="crumb" id="crumb">Customer Portal</div><div class="search">⌕ &nbsp; Search or use <kbd>⌘ K</kbd></div><div class="actions"><button class="icon" onclick="openAI()">✦</button><button class="icon" data-toast="No new notifications">♢</button><button class="icon" onclick="toggleMode()">◐</button></div></header>
+<section class="content">
+<div id="home" class="page active">
+<div class="hero"><div><h1>Customer Portal</h1><p>A premium self-service experience for wholesale buyers—orders, invoices, stock and support.</p></div><div class="actions"><button class="btn" data-toast="Statement download started">Download statement</button><button class="btn primary" data-toast="New order draft opened">＋ New order</button></div></div>
+<div class="grid kpis"><div class="card kpi"><small>Available credit</small><div class="metric">৳4.80M</div><div class="trend">৳2.1M available to order</div></div><div class="card kpi"><small>Open orders</small><div class="metric">7</div><div class="trend">3 shipping today</div></div><div class="card kpi"><small>Account balance</small><div class="metric">৳1.24M</div><div class="trend warn">৳420K due Friday</div></div><div class="card kpi"><small>Loyalty tier</small><div class="metric">Gold</div><div class="trend">12,480 points</div></div></div>
+<div class="grid split"><div class="card"><div class="head"><h3>Recommended for you</h3><span class="pill">Based on buying history</span></div><div class="body"><div class="product" style="padding:12px 0;border-bottom:1px solid var(--line)"><div class="phone"></div><div style="flex:1"><b>Redmi 15C · 8/256</b><div class="muted">Blue · 420 units available · preferred price</div></div><button class="btn primary" data-toast="Added Redmi 15C to cart">Add</button></div><div class="product" style="padding:12px 0"><div class="phone"></div><div style="flex:1"><b>Redmi Note 15 4G</b><div class="muted">Black · 188 units available · fast-moving</div></div><button class="btn primary" data-toast="Added Note 15 4G to cart">Add</button></div></div></div>
+<div class="card"><div class="head"><h3>Order tracker</h3></div><div class="body"><div class="timeline"><div class="event"><b>SO-48291</b> · Packed<small>Dhaka Hub · ETA today 18:20</small></div><div class="event"><b>SO-48276</b> · In transit<small>Chattogram → Dhaka · ETA tomorrow</small></div><div class="event"><b>SO-48231</b> · Delivered<small>Yesterday · 480 units</small></div></div></div></div></div>
+<div class="grid modules" style="margin-top:12px"><div class="card module"><div class="ico">▦</div><h3>Live catalogue</h3><p>Wholesale availability and your contracted pricing, always current.</p><button class="btn" data-toast="Live catalogue opened">Browse →</button></div><div class="card module"><div class="ico">▤</div><h3>Invoices & statements</h3><p>Download invoices, payment history and account statements.</p><button class="btn" data-toast="Invoices opened">View →</button></div><div class="card module"><div class="ico">◌</div><h3>Priority support</h3><p>Open and track tickets with your dedicated account team.</p><button class="btn" data-toast="Support center opened">Get help →</button></div></div>
+</div>
+<div id="generated" class="page"></div>
+</section></main></div>
+
+<div class="drawer" id="drawer" onclick="if(event.target===this)closeAI()"><div class="drawerpanel"><div class="drawerhead"><div><div class="muted" style="font-size:10px;text-transform:uppercase;letter-spacing:.1em">Local intelligence</div><h2>Buying Copilot</h2></div><button class="icon" onclick="closeAI()">×</button></div><p class="muted">Private assistance over your orders, invoices, credit and catalogue.</p><div class="aiinput" style="margin-top:20px"><input id="q" placeholder="Ask: “Which SKUs sell best in my shop?”"><button class="send" onclick="answer()">↑</button></div><div id="answer" class="airesponse">Try asking about reorder timing, credit usage, bestsellers or delivery ETAs.</div><div class="insight" style="margin-top:18px"><b>Suggested</b>“What should I reorder this week?”</div><div class="insight"><b>Suggested</b>“When is my next credit review?”</div></div></div>
+
+<script src="js/auth.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

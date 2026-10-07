@@ -1,0 +1,11 @@
+{
+  "name": "nexusportal",
+  "version": "1.0.0",
+  "description": "NexusPortal — Nexus suite workspace.",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8804 --bind 127.0.0.1",
+    "serve": "npx --yes http-server -p 8804 -c-1",
+    "check": "node --check js/auth.js && node --check js/config.js && node --check js/app.js"
+  }
+}
